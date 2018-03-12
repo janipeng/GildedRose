@@ -24,6 +24,7 @@ public class Item {
             default:
                 itemStrategy = new NormalItem();
         }
+        itemStrategy.update(this);
     }
 
     /* Generated getter and setter code */
