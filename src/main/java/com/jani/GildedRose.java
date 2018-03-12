@@ -10,7 +10,7 @@ class GildedRose {
     static List<Item> items = null;
 
     static void updateQuality() {
-        items.forEach(item -> item.updateQuality());
+        items.forEach(Item::updateQuality);
     }
 
 }
