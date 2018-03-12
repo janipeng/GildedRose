@@ -17,12 +17,16 @@ public class Item {
         switch (name) {
             case "Aged Brie":
                 itemStrategy = new AgedBrie();
+                break;
             case "Backstage passes to a TAFKAL80ETC concert":
                 itemStrategy = new BackstagePasses();
+                break;
             case "Sulfuras, Hand of Ragnaros":
                 itemStrategy = new Sulfuras();
+                break;
             default:
                 itemStrategy = new NormalItem();
+                break;
         }
         itemStrategy.update(this);
     }
