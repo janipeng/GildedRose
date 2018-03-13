@@ -1,48 +1,16 @@
 package com.jani;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import static com.jani.ItemStrategyFactory.createItemStrategy;
 
-public class GildedRose {
+
+class GildedRose {
 
     static List<Item> items = null;
 
-    /**
-     * @param args
-     */
-    public static void main(String[] args) {
-
-        System.out.println("OMGHAI!");
-
-        items = new ArrayList<Item>();
-        items.add(new Item("+5 Dexterity Vest", 10, 20));
-        items.add(new Item("Aged Brie", 2, 0));
-        items.add(new Item("Elixir of the Mongoose", 5, 7));
-        items.add(new Item("Sulfuras, Hand of Ragnaros", 0, 80));
-        items.add(new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20));
-        items.add(new Item("Conjured Mana Cake", 3, 6));
-
-        updateQuality();
+    static void updateQuality() {
+        items.forEach(item -> createItemStrategy(item.getName()).update(item));
     }
 
-    public static void updateQuality() {
-        ItemStrategy itemStrategy;
-        for (Item item : items) {
-            switch (item.getName()) {
-                case "Aged Brie":
-                    itemStrategy = new AgedBrie();
-                    break;
-                case "Backstage passes to a TAFKAL80ETC concert":
-                    itemStrategy = new BackstagePasses();
-                    break;
-                case "Sulfuras, Hand of Ragnaros":
-                    itemStrategy = new Sulfuras();
-                    break;
-                default:
-                    itemStrategy = new NormalItem();
-            }
-            itemStrategy.update(item);
-        }
-    }
 }
